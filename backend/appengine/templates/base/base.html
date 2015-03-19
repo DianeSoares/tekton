@@ -55,8 +55,6 @@
                 {% macro select_tab(tab='') %}
                     <li {{ 'class="active"' | safe if tab=='CURIOSIDADES' }}><a href="/curiosidades">{% trans %}Curiosidades{% endtrans %}</a>
                     </li>
-                    <li {{ 'class="active"' | safe if tab=='FILMES' }}><a href="/filmes">{% trans %}Filmes{% endtrans %}</a>
-                    </li>
                     <li {{ 'class="active"' | safe if tab=='NOTICIAS' }}><a href="/noticias">{% trans %}Noticias{% endtrans %}</a>
                     </li>
                     <li {{ 'class="active"' | safe if tab=='DOWNLOADS' }}><a href="/downloads">{% trans %}Downloads{% endtrans %}</a>
