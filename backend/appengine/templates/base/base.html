@@ -61,7 +61,7 @@
                     </li>
                     <li {{ 'class="active"' | safe if tab=='DOWNLOADS' }}><a href="/downloads">{% trans %}Downloads{% endtrans %}</a>
                     </li>
-                    <li {{ 'class="active"' | safe if tab=='CONTATOS' }}><a href="/contatos">{% trans %}Contato{% endtrans %}</a>
+                    <li {{ 'class="active"' | safe if tab=='CONTATOS' }}><a href="/contato">{% trans %}Contato{% endtrans %}</a>
                     </li>
                     {% if _logged_user and 'ADMIN' in _logged_user.groups %}
                         <li {{ 'class="active"' | safe if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a>
