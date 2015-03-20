@@ -60,3 +60,18 @@ list-style:none;
 margin-left: -40px;
 margin-top:20px;
 }
+
+a.list-group-item {
+    height:auto;
+    min-height:220px;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+.stars {
+    margin:20px auto 1px;
+}
+
+.list-group-item.active {
+    color:#fff;
+}
