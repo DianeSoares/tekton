@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+{% block css %}
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css"/>
+    <link rel="stylesheet" href="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
+{% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row ">
+
+        <!-----COMEÇO DA PÁGINA-->
+		<div class="col-md-12 column">
+
+         <h1>
+                <img src="http://i.imgur.com/uOn6cBv.png?1" align="right">
+				</h1>
+            <div class="container">
+
+
+             <div class="row">
+                 <div class="col-md-6 col-md-offset-3">
+                    <div class="well">
+                <h3 align="center"> Formulário de HQ</h3>
+                <form action="{{ salvar_path }}" method="post">
+                    {{ csrf_input() }}
+                        <h4>Categoria:</h4>
+                    {% macro select(nome) %}
+                <select name="{{ nome }}">
+                         {% for cat in categorias %}
+                         <option value="{{ cat.key.id() }}" {{'selected="selected"' | safe if categoria_selecionada==cat }}> {{ cat.nome }}</option>
+                 {% endfor %}
+                </select>
+    {% endmacro %}
+    {{ select('categoria') }}
+    {{ form_input('Nome','nome','','') }}
+
+
+    <button class="btn btn-primary" type="submit">Salvar</button>
+        </form>
+                <br>
+                    <br>
+                        <br>
+            <h3 align="center">Lista de HQs {{ ' da categoria '+ categoria_selecionada.nome if categoria_selecionada }}</h3>
+                    <br>
+
+            <form action="{{ pesquisar_path }}">
+            {{ select('categoria_selecionada') }}
+                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </form>
+
+            <ul>
+            {% for hq in hqs %}
+            <li>{{ hq.nome }}</li>
+            {% endfor %}
+            </ul>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+
+        <h1>
+                <img src="http://i.imgur.com/uOn6cBv.png?1" align="left">
+				</h1>
+    </div>
+  </div>
+</div>
+{% endblock %}

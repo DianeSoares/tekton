@@ -16,6 +16,11 @@ indexes:
   - name: origin
   - name: creation
 
+- kind: HQs
+  properties:
+  - name: categoria
+  - name: nome
+
 - kind: Node
   properties:
   - name: class

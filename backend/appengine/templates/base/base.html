@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html
 {% macro csrf_input() %}
     <input type="hidden" value="{{ _csrf_code }}" name="_csrf_code"/>
 {% endmacro %}
@@ -21,7 +21,7 @@
     <!-- Bootstrap -->
 
     <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/css/default.css" rel="stylesheet">
+    <link href="/static/css/base.css" rel="stylesheet">
     <style>
         .pad8 {
             margin: 8px 15px;
@@ -53,17 +53,21 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 {% macro select_tab(tab='') %}
-                    <li {{ 'class="active"' | safe if tab=='CURIOSIDADES' }}><a href="/curiosidades">{% trans %}Curiosidades{% endtrans %}</a>
-                    </li>
                     <li {{ 'class="active"' | safe if tab=='NOTICIAS' }}><a href="/noticias">{% trans %}Noticias{% endtrans %}</a>
                     </li>
                     <li {{ 'class="active"' | safe if tab=='DOWNLOADS' }}><a href="/downloads">{% trans %}Downloads{% endtrans %}</a>
                     </li>
+                    <li {{ 'class="active"'|safe if tab=='CATEGORIAS' }}><a href="/categorias">Categorias</a>
+                    </li>
+                    <li {{ 'class="active"'|safe if tab=='HQS' }}><a href="/hqs">HQs</a>
+                    </li>
                     <li {{ 'class="active"' | safe if tab=='CONTATOS' }}><a href="/contato">{% trans %}Contato{% endtrans %}</a>
                     </li>
+
                     {% if _logged_user and 'ADMIN' in _logged_user.groups %}
                         <li {{ 'class="active"' | safe if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a>
                         </li>
+
                     {% endif %}
                 {% endmacro %}
                 {% block tabs %}

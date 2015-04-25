@@ -10,3 +10,4 @@ from gaepermission.decorator import login_not_required
 def index():
     return TemplateResponse()
 
+

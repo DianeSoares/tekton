@@ -1,0 +1,38 @@
+{% extends 'categorias/categoria_base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+    <h3>Formulário de Categoria</h3>
+    <form action="{{ salvar_path }}" method="post">
+    {{ csrf_input() }}
+    {{ form_input('Nome','nome','','') }}
+    <button class="btn btn-primary" type="submit">Salvar</button>
+</form>
+
+<h3 align="center">Lista de Categorias</h3><br>
+
+
+{% for cat in categorias %}
+<li>{{ cat.nome }}
+    <a class="btn btn-primary" href="{{ cat.edit_path }}">
+    <i class="glyphicon glyphicon-pencil" ></i></a>
+
+<form action="{{ cat.deletar_path }}" method="post">
+{{ csrf_input() }}
+<button class="btn btn-danger" ><i class="glyphicon glyphicon-trash" ></i></button>
+</form>
+
+</li>
+{% endfor %}
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+{% endblock %}
