@@ -37,12 +37,12 @@
                 <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </form></br>
 
-            <table border="0" align="left">
+            <table border="0" align="center">
                 {% for hq in hqs %}
                     <tr>
                         <td>{{ hq.nome }}&nbsp;</td>
                         <td>
-                            <a class="btn btn-primary" href="{{ hq.deletar_path }}">
+                            <a class="btn btn-primary" href="{{ hq.edit_path }}">
                                 <i class="glyphicon glyphicon-pencil" ></i>
                             </a>
                         </td>

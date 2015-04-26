@@ -10,7 +10,7 @@ from tekton.router import to_path
 @no_csrf
 def index(hq_id):
     hq=HQs.get_by_id(int(hq_id))
-    ctx={'hq':hq,
+    ctx={'hqs':hqs,
          'salvar_path':to_path(salvar)}
     return TemplateResponse(ctx,'hqs/hqs_form.html')
 

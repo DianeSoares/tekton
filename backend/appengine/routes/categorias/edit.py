@@ -15,7 +15,7 @@ def index(categoria_id):
          'salvar_path':to_path(salvar)}
     return TemplateResponse(ctx,'categorias/categoria_form.html')
 
-def salvar(categoria_id, nome):
+def save(categoria_id, nome):
     categoria=Categoria.get_by_id(int(categoria_id))
     categoria.nome=nome
     categoria.put()

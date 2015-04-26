@@ -1,16 +1,16 @@
-{% extends 'categorias/categoria_base.html' %}
+{% extends 'hqs/hqs_base.html' %}
 {% block body %}
-{% set hqs = hqs or None %}
+{% set hq = hq or None %}
 {% set erros = erros or None %}
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-            <h3>Formulário de Categoria</h3>
+            <h3>Formulário de HQs</h3>
                 <form action="{{ salvar_path }}" method="post">
                     {{ csrf_input() }}
-                    {{ form_input('Nome','nome',hqs.nome,erros.nome) }}
-                    {% if hqs and hqs.key %}
-                <input type="hidden" name="hq_id" value="{{ hqs.key.id() }}" />
+                    {{ form_input('Nome','nome',hq.nome,erros.nome) }}
+                    {% if hq and hqs.key %}
+                <input type="hidden" name="hq_id" value="{{ hq.key.id() }}" />
                 {% endif %}
                 <button class="btn btn-success" type="submit">Salvar</button>
                 </form>
