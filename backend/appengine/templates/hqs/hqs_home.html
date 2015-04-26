@@ -1,66 +1,65 @@
 {% extends 'base/base.html' %}
 {% block css %}
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css"/>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css" xmlns="http://www.w3.org/1999/html"/>
     <link rel="stylesheet" href="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
 {% endblock %}
 {% block body %}
 <div class="container">
-	<div class="row ">
-
-        <!-----COMEÇO DA PÁGINA-->
+	<div class="row clearfix">
 		<div class="col-md-12 column">
-
-         <h1>
-                <img src="http://i.imgur.com/uOn6cBv.png?1" align="right">
-				</h1>
-            <div class="container">
-
-
-             <div class="row">
-                 <div class="col-md-6 col-md-offset-3">
-                    <div class="well">
-                <h3 align="center"> Formulário de HQ</h3>
-                <form action="{{ salvar_path }}" method="post">
-                    {{ csrf_input() }}
-                        <h4>Categoria:</h4>
-                    {% macro select(nome) %}
-                <select name="{{ nome }}">
-                         {% for cat in categorias %}
-                         <option value="{{ cat.key.id() }}" {{'selected="selected"' | safe if categoria_selecionada==cat }}> {{ cat.nome }}</option>
-                 {% endfor %}
-                </select>
-    {% endmacro %}
+                <h1><img src="http://i.imgur.com/uOn6cBv.png?1" align="right"></h1>
+                    <h3 align="center"> Formulário de HQ</h3></br>
+                        <form action="{{ salvar_path }}" method="post" style="width:800px; margin: 0 auto;">
+                            {{ csrf_input() }}
+                            <b>Categoria:</b>
+                    <div class="form-group col-lg-12">
+                         <div class="required-field-block">
+                            {% macro select(nome) %}
+                            <select name="{{ nome }}" class="form-control input-sm">
+                                {% for cat in categorias %}
+                                    <option value="{{ cat.key.id() }}" {{'selected="selected"' | safe if categoria_selecionada==cat }}> {{ cat.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        {% endmacro %}
+                     </div>
+                </div>
     {{ select('categoria') }}
     {{ form_input('Nome','nome','','') }}
-
-
     <button class="btn btn-primary" type="submit">Salvar</button>
         </form>
                 <br>
                     <br>
                         <br>
-            <h3 align="center">Lista de HQs {{ ' da categoria '+ categoria_selecionada.nome if categoria_selecionada }}</h3>
-                    <br>
+            <h3 align="center">Lista de HQs {{ ' da categoria '+ categoria_selecionada.nome if categoria_selecionada }}</h3><br>
 
-            <form action="{{ pesquisar_path }}">
+            <form action="{{ pesquisar_path }}" style="width:800px; margin: 0 auto;">
             {{ select('categoria_selecionada') }}
                 <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </form>
+            </form></br>
 
-            <ul>
-            {% for hq in hqs %}
-            <li>{{ hq.nome }}</li>
-            {% endfor %}
-            </ul>
+            <table border="0" align="left">
+                {% for hq in hqs %}
+                    <tr>
+                        <td>{{ hq.nome }}&nbsp;</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ hq.deletar_path }}">
+                                <i class="glyphicon glyphicon-pencil" ></i>
+                            </a>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <form action="{{ hq.deletar_path }}" method="post">
+                                {{ csrf_input() }}
+                                <button class="btn btn-danger" >
+                                    <i class="glyphicon glyphicon-trash" ></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                {% endfor %}
+             </table>
                 </div>
-                    </div>
-                </div>
-
-            </div>
-
-        <h1>
-                <img src="http://i.imgur.com/uOn6cBv.png?1" align="left">
-				</h1>
     </div>
   </div>
 </div>
