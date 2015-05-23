@@ -4,7 +4,9 @@ from backend.appengine.config.template_middleware import TemplateResponse
 from backend.appengine.routes import hqs
 from tekton.gae.middleware.redirect import RedirectResponse
 
+from gaepermission.decorator import login_not_required
 
+@login_not_required
 def salvar(**kwargs):
     form = HQsForm(**kwargs)
     erros=form.validate()
