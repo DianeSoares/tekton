@@ -1,0 +1,30 @@
+
+            <table border="0" align="center">
+
+                    <tr>
+                        <td><img alt="140x140" src="{{ categoria2.imagem }}" class="img-circle">&nbsp;
+                        <input type="text" ng-show="editingFlag" ng-model="categoriaEdicao.imagem"></td>
+                        <td><span ng-hide="editingFlag">{{ categoria2.nome }}</span>&nbsp;<input type="text" ng-show="editingFlag" ng-model="categoriaEdicao.nome"></td>
+                        <td>
+                            <button class="btn btn-primary" ng-hide="ajaxFlag || editingFlag">
+                                <i class="glyphicon glyphicon-pencil" ng-click="editar()"></i>
+                            </button>
+                            <button class="btn btn-success" ng-hide="ajaxFlag || !editingFlag">
+                                <i class="glyphicon glyphicon-floppy-save" ng-click="completarEdicao()"></i>
+                            </button>
+                            <button class="btn btn-warning" ng-hide="ajaxFlag || !editingFlag">
+                                <i class="glyphicon glyphicon-floppy-remove" ng-click="cancelar()"></i>
+                            </button>
+                            <img src="/static/img/ajax.gif" ng-show="ajaxFlag"/>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <button class="btn btn-danger" ng-hide="ajaxFlag">
+                                <i class="glyphicon glyphicon-trash" ng-click="deletar()"></i>
+                            </button>
+                            <img src="/static/img/ajax.gif" ng-show="ajaxFlag"/>
+                        </td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+
+            </table>

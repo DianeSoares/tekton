@@ -1,41 +1,89 @@
 {% extends 'categorias/categoria_base.html' %}
-{% block body %}
-<div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-            <h3>Formulário de Categoria</h3>
-                <form action="{{ salvar_path }}" method="post">
-                    {{ csrf_input() }}
-                    {{ form_input('Nome','nome','','') }}
-                <button class="btn btn-primary" type="submit">Salvar</button>
-                </form></br>
+{% set erros=erros or None %}
+{% block js %}
+   <script type="text/javascript" src="/static/angular/js/angular.min.js"></script>
+   <script type="text/javascript" src="/static/categoria/categoria.js"></script>
+   <script type="text/javascript">
+       var rest= angular.module('rest',[]);
+        rest.factory('CategoriaApi', function($http){
+            return {
+                salvar: function(categoria){
+                    return $http.post('/rest/categorias/salvar', categoria);
+                },
+                listar:function(){
+                    return $http.post('/rest/categorias/listar');
+                },
+                deletar:function(id){
+                    return $http.post('/rest/categorias/apagar',{categoria_id:id});
+                }
+            };
+        });
 
-            <h3 align="left">Lista de Categorias</h3><br>
-                <table border="0" align="left">
-                {% for cat in categorias %}
-                    <tr>
-                        <td>{{ cat.nome }}&nbsp;</td>
-                        <td>
-                            <a class="btn btn-primary" href="{{ cat.edit_path }}">
-                                <i class="glyphicon glyphicon-pencil" ></i>
-                            </a>
-                        </td>
-                        <td>&nbsp;</td>
-                        <td>
-                            <form action="{{ cat.deletar_path }}" method="post">
-                                {{ csrf_input() }}
-                                <button class="btn btn-danger" >
-                                    <i class="glyphicon glyphicon-trash" ></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr><td>&nbsp;</td></tr>
-                {% endfor %}
-             </table>
+       {# var rest= angular.module('rest',[]);
+        rest.factory('CategoriaApi', function($rootScope){
+            return {
+                salvar: function(categoria){
+                    var obj={};
+                    obj.success= function(fcnSucesso){
+                        obj.fcnSucesso=fcnSucesso;
+                    };
+                    obj.error= function(fcnErro){
+                        obj.fcnErro=fcnErro;
+                    };
+                    setTimeout(function(){
+                        categoria.id=1;
+                        obj.fcnSucesso(categoria);
+                        $rootScope.$digest()
+                    },1000);
+                    return obj;
+                    return $http.post('/rest/categorias/salvar', categoria);
+                }
+            };
+        });#}
+        var categoriaApp=angular.module('categoriaApp',['categoriaModulo','rest']);
+
+        function CategoriaController($scope,CategoriaApi){
+            $scope.categoria={nome:'blah',imagem:'imagem'};
+            $scope.mostrarFormFlag=false;
+            $scope.categoriaLista= [];
+            $scope.listandoFlag=true;
+            CategoriaApi.listar().success(function(categorias){
+                $scope.categoriaLista=categorias;
+                $scope.listandoFlag = false;
+            });
+
+            $scope.mostrarOuEsconderForm=function(){
+                $scope.mostrarFormFlag=!$scope.mostrarFormFlag;
+            }
+
+            $scope.adicionarCategoria=function(categoria){
+                $scope.categoriaLista.unshift(categoria);
+            }
+            $scope.removerCategoria=function(categoria){
+                var categoriaLista = $scope.categoriaLista;
+                for(var i = 0; i < categoriaLista.length; i+=1){
+                    if(categoria.id == categoriaLista[i].id){
+                        categoriaLista.splice(i,1);
+                        break;
+                    }
+                }
+            }
+        }
+   </script>
+{% endblock %}
+{% block body %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+	<div class="row clearfix">
+		<div class="col-md-12 column" ng-app="categoriaApp" ng-controller="CategoriaController">
+            <h1 class="text-center">Formulário de Categorias</h1>
+            <center><button class="btn btn-warning" ng-click="mostrarOuEsconderForm()">Nova Categoria</button></center>
+            <br/>
+            <categoriaform ng-show="mostrarFormFlag" categoria2="categoria" nome-label="Nome" imagem-label="Imagem" save-complete="adicionarCategoria(categoria)">
+            </categoriaform><br/>
+            <h1 class="text-center">Categorias</h1><br/>
+            <table categorialinha ng-repeat="c in categoriaLista" categoria2="c" delete-complete="removerCategoria(categoria)"></table>
+            <img src="/static/img/ajax.gif" ng-show="listandoFlag"/>
         </div>
     </div>
-</div>
-
 </div>
 {% endblock %}

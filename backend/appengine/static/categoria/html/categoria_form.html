@@ -1,0 +1,18 @@
+<form style="width:400px; margin: 0 auto;">
+
+    <div id="nome-div" class="form-group " ng-class="{true: '', false: 'has-error'}[errors.nome==null]">
+        <label for="nomeInput" class="control-label">{{ nomeLabel }}</label>
+        <input id="nome-input" type="text" class="form-control" ng-model="categoria2.nome">
+        <span class="help-block" ng-show="errors.nome"> {{ errors.nome }}</span>
+    </div>
+
+    <div id="imagem-div" class="form-group " ng-class="{true: '', false: 'has-error'}[errors.imagem==null]">
+        <label for="imagemInput" class="control-label">{{ imagemLabel }} </label>
+        <input id="imagem-input" type="text" class="form-control "ng-model="categoria2.imagem">
+        <span class="help-block" ng-show="errors.imagem"> {{ errors.imagem }}</span>
+    </div>
+
+    <button type="reset" class="btn btn-warning">Limpar</button>
+    <button class="btn btn-warning" type="submit" ng-click="salvar()" ng-hide="salvandoFlag">Salvar</button>
+    <img id="ajax-img" src="/static/img/ajax.gif" ng-show="salvandoFlag"/>
+</form>

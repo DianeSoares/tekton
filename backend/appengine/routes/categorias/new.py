@@ -4,8 +4,9 @@ from categoria.categoria_model import Categoria, CategoriaForm
 from config.template_middleware import TemplateResponse
 from routes import categorias
 from tekton.gae.middleware.redirect import RedirectResponse
+from gaepermission.decorator import login_not_required
 
-
+@login_not_required
 def salvar(**kwargs):
     form = CategoriaForm(**kwargs)
     erros=form.validate()
