@@ -1,104 +1,15 @@
 {% extends 'base/base.html' %}
 {% block css %}
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css"/>
-    <link rel="stylesheet" href="/static/css/maps.css"/>
     <link rel="stylesheet" href="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
-{% endblock %}
-{%  block js %}
-    <script src="/static/bootstrap/js/maps.js"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <link href="/static/css/base.css" rel="stylesheet">
+
+
 {% endblock %}
 {% block body %}
-   <div class="container">
-    <h1><img id="contato" src="http://i.imgur.com/nDZHjet.jpg?1" class="img-circle"> Contato </h1>
-</div>
+    <div align="center" >
 
-<!-- Contato-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="well well-sm">
-                <form class="form-horizontal" method="post">
-                    <fieldset>
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="fname" name="name" type="text" placeholder="Nome" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="lname" name="name" type="text" placeholder="Sobrenome" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="email" name="email" type="text" placeholder="Email " class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="phone" name="phone" type="text" placeholder="Telefone" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <textarea class="form-control" id="message" name="message" placeholder="Envie sua mensagem e retornamos o contato em até dois dias úteis." rows="7"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                               <button type="reset" class="btn btn-warning">Limpar</button>
-                                <button type="submit" class="btn btn-warning">Enviar</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
+            <img id="img" src="/static/img/adriellefotografia.png" class="img-responsive" >
         </div>
-        <div class="col-md-6">
-            <div>
-                <div class="panel panel-default">
-                    <div class="panel-body text-center">
-                        <h4>Endereço</h4>
-                        <div>
-                        São José dos Campos<br />
-                        (12) 3232 7070<br />
-                        geekie@gmail.com<br />
-                        </div>
-                        <div id="map1" class="map">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-   </div>
-
-    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
-
-<script type="text/javascript">
-    jQuery(function ($) {
-        function init_map1() {
-            var myLocation = new google.maps.LatLng(38.885516, -77.09327200000001);
-            var mapOptions = {
-                center: myLocation,
-                zoom: 16
-            };
-            var marker = new google.maps.Marker({
-                position: myLocation,
-                title: "Property Location"
-            });
-            var map = new google.maps.Map(document.getElementById("map1"),
-                mapOptions);
-            marker.setMap(map);
-        }
-        init_map1();
-    });
-</script>
 
 {% endblock %}
