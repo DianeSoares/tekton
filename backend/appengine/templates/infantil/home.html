@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% block css %}
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css"/>
+    <link rel="stylesheet" href="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
+{% endblock %}
+{% block body %}
+
+    <div class="container-fluid">
+	<div class="row">
+			<div class="carousel slide" id="carousel-206690">
+				<ol class="carousel-indicators">
+					<li data-slide-to="0" data-target="#carousel-206690">
+					</li>
+					<li data-slide-to="1" data-target="#carousel-206690">
+					</li>
+					<li data-slide-to="2" data-target="#carousel-206690" class="active">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item">
+						<img  src="/static/img/3.jpg" />
+
+					</div>
+					<div class="item">
+						<img  src="/static/img/1.jpg" />
+
+					</div>
+					<div class="item active">
+						<img  src="/static/img/4.jpg"/>
+
+					</div>
+				</div> <a class="left carousel-control" href="#carousel-206690" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-206690" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+	</div>
+</div>
+{% endblock %}

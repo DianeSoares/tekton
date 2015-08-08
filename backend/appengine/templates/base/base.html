@@ -40,44 +40,51 @@
     {% block js %}{% endblock %}
 </head>
 <body>
-  <nav id="primary_nav_wrap">
-<ul>
-  <li class="current-menu-item"><a href="#">Inicío</a></li>
-  <li><a href="#">Portfólio</a>
-    <ul>
-      <li><a href="#">Sub Menu 1</a></li>
-      <li><a href="#">Sub Menu 2</a></li>
-      <li><a href="#">Sub Menu 3</a></li>
-      <li><a href="#">Sub Menu 4</a></li>
+<div class="navbar-wrapper">
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="navbar-header">
+          <nav id="primary_nav_wrap">
+        <ul>
+          <li class="current-menu-item"><a href="/">Inicío</a></li>
+          <li><a href="#">Portfólio</a>
+            <ul>
+              <li><a href="/infantil">Aniversário</a></li>
+              <li><a href="#">Portfolio de artistas</a></li>
+              <li><a href="#">Ensaio gestante</a></li>
+              <li><a href="#">Sub Menu 4</a></li>
 
-    </ul>
-  </li>
-  <li><a href="/fotografa">A fotógrafa</a>
-   </li>
-  <li><a href="/contato">Contato</a></li>
-</ul>
-</nav>
-{% block body %}{% endblock %}
-<!---------  <div class="footer">
-    <div class="container">
-<p class="text-muted text-right">
-  <a class="btn btn-social-icon btn-twitter">
-    <i class="fa fa-twitter"></i>
-  </a>
-        <a class="btn btn-social-icon btn-github">
-    <i class="fa fa-github"></i>
-  </a>
-        <a class="btn btn-social-icon btn-facebook">
-    <i class="fa fa-facebook"></i>
-  </a>
-        <a class="btn btn-social-icon btn-tumblr">
-    <i class="fa fa-tumblr"></i>
-  </a>
-        <a class="btn btn-social-icon btn-instagram">
-    <i class="fa fa-instagram"></i>
-  </a></p>
+            </ul>
+          </li>
+          <li><a href="/fotografa">A fotógrafa</a>
+           </li>
+          <li><a href="/contato">Contato</a></li>
+        </ul>
+        </nav>
+              </div>
     </div>
-</div>
-</div>--->
+    </div>
+        {% block body %}{% endblock %}
+        <!---------  <div class="footer">
+            <div class="container">
+        <p class="text-muted text-right">
+          <a class="btn btn-social-icon btn-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+                <a class="btn btn-social-icon btn-github">
+            <i class="fa fa-github"></i>
+          </a>
+                <a class="btn btn-social-icon btn-facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+                <a class="btn btn-social-icon btn-tumblr">
+            <i class="fa fa-tumblr"></i>
+          </a>
+                <a class="btn btn-social-icon btn-instagram">
+            <i class="fa fa-instagram"></i>
+          </a></p>
+            </div>
+        </div>
+        </div>--->
+
 </body>
 </html>
