@@ -17,8 +17,8 @@ body{
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 60px;
-    border-top: solid #0d0d00 1px;
-    background-color: #B03060;
+    border-top: transparent;
+    background-color: transparent;
 }
 
 #imgHome{
